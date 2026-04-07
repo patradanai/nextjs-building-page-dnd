@@ -18,7 +18,7 @@ export interface IGetRefreshTokenRequest {
     refresh_token: string
 }
 
-export interface IGetRefreshTokenResponse extends IRefreshToken {}
+export type IGetRefreshTokenResponse = IRefreshToken
 
 export interface ISignInRequest {
     username: string
@@ -40,8 +40,8 @@ export interface ISignOutRequest {
     username: string
 }
 
-export interface ISignOutResponse {}
+export type ISignOutResponse = Record<string, never>
 
-export interface ISignUpRequest {}
+export type ISignUpRequest = Record<string, never>
 
-export interface ISignUpResponse {}
+export type ISignUpResponse = Record<string, never>

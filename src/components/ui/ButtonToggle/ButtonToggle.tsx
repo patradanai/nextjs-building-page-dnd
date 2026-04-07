@@ -8,7 +8,7 @@ import { NextPage } from 'next'
  *
  */
 
-interface Props {}
+type Props = Record<string, never>
 
 const ButtonToggle: NextPage<Props> = () => {
     return <div>ButtonToggle</div>

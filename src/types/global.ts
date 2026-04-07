@@ -1,6 +1,6 @@
-export interface IMenuPermissionResponse {}
+export type IMenuPermissionResponse = Record<string, never>
 
-export interface IMenuPermissionRequest {}
+export type IMenuPermissionRequest = Record<string, never>
 
 export interface IMenus {
     id: number

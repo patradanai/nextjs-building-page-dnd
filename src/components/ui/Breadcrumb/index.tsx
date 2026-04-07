@@ -1,11 +1,9 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
-
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-import { NextPage } from 'next'
+import { NextPage, Route } from 'next'
 
 import breadcrumbConstant from '@/constants/breadcrumb.json'
 
@@ -22,23 +20,15 @@ interface Props {
 }
 
 export const BreadCrumb: NextPage<Props> = ({ className }) => {
-    const [breadcrumb, setBreadcrumb] = useState<BreadCrumbChild[]>([])
     const router = usePathname()
-
-    useEffect(() => {
-        const routers = router.split('/')
-        routers.shift() // delete first array
-
-        const pathArray: Array<BreadCrumbChild> = routers.map((path, idx) => {
-            return {
-                id: Date.now().toString(),
-                breadCrumb: path,
-                to: `/${routers.slice(0, idx + 1).join('/')}`,
-            }
-        })
-
-        setBreadcrumb(pathArray)
-    }, [router])
+    const breadcrumb: BreadCrumbChild[] = router
+        .split('/')
+        .filter(Boolean)
+        .map((path, idx, routers) => ({
+            id: `${path}-${idx}`,
+            breadCrumb: path,
+            to: `/${routers.slice(0, idx + 1).join('/')}`,
+        }))
 
     if (breadcrumb?.length <= 0) return null
 
@@ -53,7 +43,7 @@ export const BreadCrumb: NextPage<Props> = ({ className }) => {
                             </p>
                         </Link>
                         {breadcrumb.map((val) => (
-                            <Link key={val.id} href={val.to}>
+                            <Link key={val.id} href={val.to as Route}>
                                 <p className="whitespace-nowrap text-sm font-medium">
                                     {breadcrumbConstant[
                                         val.breadCrumb as keyof typeof breadcrumbConstant

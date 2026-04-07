@@ -9,7 +9,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { NextPage } from 'next'
 
-interface Props {}
+type Props = Record<string, never>
 
 const MenuFloating: NextPage<Props> = () => {
     return (

@@ -3,7 +3,7 @@ export interface IPatchResourceRequest {
     data: IPatchResourceRequestData
 }
 
-export interface IPatchResourceRequestData {}
+export type IPatchResourceRequestData = Record<string, never>
 
 export interface IPatchResourceResponse {
     id: string

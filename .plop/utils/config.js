@@ -17,8 +17,8 @@ module.exports = {
     ],
     actions: (data) => {
         let actions = [
-             // index.ts
-             {
+            // index.ts
+            {
                 type: 'add',
                 path: `${componentsPath}/utils/{{properCase name}}/index.ts`,
                 templateFile: './utils/index.ts.hbs',

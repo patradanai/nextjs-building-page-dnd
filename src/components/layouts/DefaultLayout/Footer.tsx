@@ -18,7 +18,7 @@ import { ImageLoader } from '@/components/ui/ImageLoader'
 import { useHomeClient } from '@/hooks/useHome'
 import { env } from '@/utils/env'
 
-interface Props {}
+type Props = Record<string, never>
 
 export const Footer: NextPage<Props> = () => {
     const { data, loading, error } = useHomeClient(env.NEXT_PUBLIC_RESOURCE_ID)

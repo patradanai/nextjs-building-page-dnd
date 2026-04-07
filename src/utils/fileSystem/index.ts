@@ -16,7 +16,9 @@ const getPosts = async () => {
             content,
             slug: path.basename(next).replace(/\.mdx$/, ''),
         }
-        !data.draft && prev.push(getPost)
+        if (!data.draft) {
+            prev.push(getPost)
+        }
         return prev
     }, [])
 }
@@ -34,7 +36,9 @@ const getPostByPath = async (src: string) => {
             slug: path.basename(next).replace(/\.mdx$/, ''),
         }
 
-        !data.draft && prev.push(getPost)
+        if (!data.draft) {
+            prev.push(getPost)
+        }
         return prev
     }, [])
 }

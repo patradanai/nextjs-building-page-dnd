@@ -18,7 +18,9 @@ const FormLogin = () => {
         resolver: zodResolver(UserSchema),
     })
 
-    const onSubmit = (data: any) => console.log(data)
+    const onSubmit = (data: any) => {
+        void data
+    }
 
     return (
         <Section className="mx-auto mt-20">

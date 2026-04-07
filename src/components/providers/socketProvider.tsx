@@ -7,22 +7,20 @@ import { SocketServiceImpl } from '@/services/implements/socketServiceImpl'
 import { SocketService } from '@/services/socketService'
 
 export const SocketProvider = ({ children }: { children: React.ReactNode }) => {
-    const [socketService, setSocketService] = useState<SocketService | null>(
-        null
+    const [socketService] = useState<SocketService>(
+        () => new SocketServiceImpl()
     )
-    const [isConnected, setIsConnected] = useState(false)
+    const [isConnected] = useState(() => {
+        return socketService.socket().isConnectionAvailable()
+    })
 
     useEffect(() => {
-        const socketService = new SocketServiceImpl()
-        const { disconnect, isConnectionAvailable } = socketService.socket()
-
-        setSocketService(socketService)
-        setIsConnected(isConnectionAvailable)
+        const { disconnect } = socketService.socket()
 
         return () => {
             disconnect()
         }
-    }, [])
+    }, [socketService])
 
     return (
         <SocketContext.Provider value={{ socketService, isConnected }}>

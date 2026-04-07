@@ -2,7 +2,7 @@ import React from 'react'
 
 import { NextPage } from 'next'
 
-interface Props {}
+type Props = Record<string, never>
 
 export const Error: NextPage<Props> = () => {
     return (

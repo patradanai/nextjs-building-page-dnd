@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
 
 import dynamic from 'next/dynamic'
 
@@ -30,18 +30,10 @@ const FormContent = () => {
         resolver: zodResolver(ContentSchema),
     })
 
-    const editorRef = useRef<RichTextEditorHandle>(null) // Ref for RichTextEditor
-    const [editorContent, setEditorContent] = useState<string>('') // State to store the editor content
-
-    const handleGetContent = () => {
-        if (editorRef.current) {
-            const content = editorRef.current.getContent() // Get the editor content
-            setEditorContent(content) // Update the state with the content
-        }
-    }
+    const editorRef = useRef<RichTextEditorHandle>(null)
 
     const onSubmit: SubmitHandler<IContentFormData> = (data) => {
-        console.log(data)
+        void data
     }
 
     return (

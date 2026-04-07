@@ -36,7 +36,11 @@ export const FormImageUpload: React.FC<FormImageUploadProps> = ({
         defaultValue: '',
     })
 
-    const [preview, setPreview] = useState<string | null>(null)
+    const [preview, setPreview] = useState<string | null>(() => {
+        if (typeof value === 'string' && value) return value
+        if (defaultImage && !value) return defaultImage
+        return null
+    })
     const [isDragging, setIsDragging] = useState(false)
 
     // Set preview when value changes or component mounts
@@ -47,14 +51,15 @@ export const FormImageUpload: React.FC<FormImageUploadProps> = ({
                 setPreview(reader.result as string)
             }
             reader.readAsDataURL(value)
-        } else if (typeof value === 'string' && value) {
-            setPreview(value)
-        } else if (defaultImage && !value) {
-            setPreview(defaultImage)
-        } else {
-            setPreview(null)
         }
-    }, [value, defaultImage])
+    }, [value])
+
+    const displayPreview =
+        typeof value === 'string' && value
+            ? value
+            : !value && defaultImage
+              ? defaultImage
+              : preview
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0]
@@ -127,11 +132,11 @@ export const FormImageUpload: React.FC<FormImageUploadProps> = ({
                     disabled={disabled}
                 />
 
-                {preview ? (
+                {displayPreview ? (
                     <div className="relative">
                         <div className="relative h-64 w-full overflow-hidden rounded-md">
                             <Image
-                                src={preview}
+                                src={displayPreview}
                                 alt="Preview"
                                 fill
                                 className="object-contain"

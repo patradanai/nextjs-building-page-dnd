@@ -17,8 +17,8 @@ module.exports = function (plop) {
             },
         ],
         actions: (data) => {
-            let fileName = `create{{ properCase name }}Slice`
-            let interfaceName = `I{{properCase name}}Slice`
+            let fileName = 'create{{ properCase name }}Slice'
+            let interfaceName = 'I{{properCase name}}Slice'
 
             fileName = plop.renderString(fileName, data)
             interfaceName = plop.renderString(interfaceName, data)

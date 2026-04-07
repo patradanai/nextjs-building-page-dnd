@@ -10,7 +10,7 @@ import { logger } from '@/utils/logger'
 
 export const withAuth = (Component: any) => {
     const AuthenticatedComponent = (props: any) => {
-        const [permission, setPermission] = useState(true)
+        const [permission, setPermission] = useState(false)
 
         // hooks
         const router = useRouter()
@@ -46,9 +46,8 @@ export const withAuth = (Component: any) => {
                         name: resRefresh?.data.name,
                         roles: resRefresh?.data.role_name,
                     })
+                    setPermission(true)
                 })
-
-                setPermission(true)
             } else {
                 localStorage.removeItem('accessToken')
                 localStorage.removeItem('refreshToken')

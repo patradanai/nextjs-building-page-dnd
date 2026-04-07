@@ -19,7 +19,7 @@ module.exports = {
                 {
                     name: 'templates',
                     value: 'templates',
-                }
+                },
             ],
         },
         {

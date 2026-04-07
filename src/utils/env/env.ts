@@ -21,6 +21,7 @@ export const env = createEnv({
      * What object holds the environment variables at runtime.
      * Often `process.env` or `import.meta.env`
      */
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     experimental__runtimeEnv: {
         NEXT_PUBLIC_APP_VERSION: process.env.NEXT_PUBLIC_APP_VERSION,
         NEXT_PUBLIC_ENVIRONMENT: process.env.NEXT_PUBLIC_ENVIRONMENT,

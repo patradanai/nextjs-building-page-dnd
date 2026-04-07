@@ -2,7 +2,7 @@ import React from 'react'
 
 import { NextPage } from 'next'
 
-interface Props {}
+type Props = Record<string, never>
 
 const Timeline: NextPage<Props> = () => {
     return <div />

@@ -4,8 +4,7 @@ import { useEffect } from 'react'
 import { useSystemStore } from '@/stores/useSystemStore'
 
 const ErrorModal = () => {
-    const { errors, isErrorModalOpen, closeErrorModal, clearErrors } =
-        useSystemStore()
+    const { errors, isErrorModalOpen, closeErrorModal } = useSystemStore()
 
     // Close modal with escape key
     useEffect(() => {
@@ -44,9 +43,9 @@ const ErrorModal = () => {
                 </div>
 
                 <div className="max-h-60 overflow-y-auto">
-                    {errors.map((error, index) => (
+                    {errors.map((error) => (
                         <div
-                            key={index}
+                            key={`${error.code ?? 'error'}-${error.message}`}
                             className="mb-3 border-b border-gray-200 pb-3 last:border-b-0"
                         >
                             <p className="font-medium">{error.message}</p>

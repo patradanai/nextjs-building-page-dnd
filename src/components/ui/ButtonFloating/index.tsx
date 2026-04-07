@@ -8,7 +8,7 @@ import { NextPage } from 'next'
  *
  */
 
-interface Props {}
+type Props = Record<string, never>
 
 const ButtonFloating: NextPage<Props> = () => {
     return <div>ButtonFloating</div>

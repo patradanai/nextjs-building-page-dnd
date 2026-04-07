@@ -19,27 +19,22 @@ interface IRepresenter<S> {
 export const useQueryWrapperHook = <T, S>(
     options?: IOptions<T, S>
 ): IRepresenter<S> => {
-    const [loading, setLoading] = useState<boolean>(false)
+    const [loading, setLoading] = useState<boolean>(!!options)
     const [error, setError] = useState<any>(null)
     const [data, setData] = useState<S | null>(null)
 
     useEffect(() => {
-        setLoading(true)
-
-        if (!options) {
-            setLoading(false)
-            return
-        }
+        if (!options) return
 
         options
-            .queryFn(options?.params ?? {})
+            .queryFn(options.params ?? {})
             .then((res) => {
                 setData(res)
-                options?.onCompleted?.(res)
+                options.onCompleted?.(res)
             })
             .catch((err) => {
-                setError(error)
-                options?.onError?.(err)
+                setError(err)
+                options.onError?.(err)
             })
             .finally(() => {
                 setLoading(false)

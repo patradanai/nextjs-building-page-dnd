@@ -1,5 +1,5 @@
 {
-    "name": "nextjs16-tailwind-template",
+    "name": "nextjs-building-page-dnd",
     "version": "0.1.0",
     "private": true,
     "type": "module",
@@ -19,6 +19,9 @@
         "test:ci": "jest --ci"
     },
     "dependencies": {
+        "@apollo/client": "^4.1.6",
+        "@apollo/client-integration-nextjs": "^0.14.4",
+        "@dnd-kit/react": "^0.3.2",
         "@formatjs/intl-localematcher": "^0.8.2",
         "@fortawesome/fontawesome-svg-core": "^7.2.0",
         "@fortawesome/free-brands-svg-icons": "^7.2.0",
@@ -94,8 +97,8 @@
         "@types/negotiator": "^0.6.4",
         "@types/react-csv": "^1.1.10",
         "@types/react-slick": "^0.23.13",
-        "eslint": "^9.38.0",
         "@typescript-eslint/eslint-plugin": "^8.58.0",
+        "eslint": "^9.38.0",
         "eslint-config-prettier": "^10.1.8",
         "eslint-import-resolver-typescript": "^4.4.4",
         "eslint-plugin-check-file": "^3.3.1",

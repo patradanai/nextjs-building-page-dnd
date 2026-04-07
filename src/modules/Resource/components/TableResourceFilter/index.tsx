@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 
 import _ from 'lodash'
 import { NextPage } from 'next'
@@ -19,13 +19,12 @@ interface Props {
 const TableResourceFilter: NextPage<Props> = ({ handleOnChange }) => {
     const [filterState, setFilterState] = useState<IResourceFilter>()
 
-    const debounceFilters = useCallback(
-        _.debounce((filter) => {
-            if (handleOnChange) {
-                handleOnChange(filter)
-            }
-        }, 1000),
-        [filterState]
+    const debounceFilters = useMemo(
+        () =>
+            _.debounce((filter: IResourceFilter | undefined) => {
+                handleOnChange(filter ?? {})
+            }, 1000),
+        [handleOnChange]
     )
 
     const handleChangeFilters = (
@@ -41,7 +40,7 @@ const TableResourceFilter: NextPage<Props> = ({ handleOnChange }) => {
     useEffect(() => {
         debounceFilters(filterState)
         return () => debounceFilters.cancel()
-    }, [filterState])
+    }, [debounceFilters, filterState])
 
     return (
         <Section className="mb-10">
