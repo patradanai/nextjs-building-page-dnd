@@ -13,12 +13,35 @@ _Test_ npm run test
 The agent must **not** implement changes immediately.
 The agent must propose a TODO plan first and wait for approval.
 
+## Pre-Approval Diff Rule
+
+Before any implementation, the agent must include:
+
+### Proposed File Diff
+
+- a preview diff for each file expected to change
+- this is a planned diff only, not the final applied diff
+- if the exact diff is uncertain, the agent should show the closest expected patch
+
+## Pre-Approval Verification Rule
+
+Before proposing a fix, the agent must verify the exact error, mismatch, or
+failing code path from the relevant file or related types.
+
+The pre-approval response must include:
+
+### Verified Issue
+
+- the exact verified error, mismatch, or failing line
+- related file or type references if relevant
+- do not rely only on assumptions when the issue can be verified by inspection
+
 ## Required Flow
 
 1. Understand the request and inspect relevant files.
 2. Create a TODO list with:
     - scope
-    - files expected to change
+    - show change files expected to change
     - risks / assumptions
     - validation plan (tests or checks)
 3. Ask for approval using clear status:
@@ -29,8 +52,10 @@ The agent must propose a TODO plan first and wait for approval.
 7. After implementation, report:
     - completed TODO items
     - files changed
+    - file diff of changes
     - verification results
     - anything skipped
+    - verified Issue
 
 ## Mandatory Verification
 
@@ -39,8 +64,8 @@ Before marking work complete, the agent must confirm code health by running:
 May I need you to confirm by run unit test, golint, go build for make sure code work.
 
 - unit tests
-- golint (or configured linter command)
-- go build
+- lint (or configured linter command)
+- build
 
 If any check fails, the agent must report the failure and stop for user approval before extra fixes.
 
@@ -58,7 +83,7 @@ If any check fails, the agent must report the failure and stop for user approval
 
 Use this structure before doing implementation:
 
-```md
+````md
 ## TODO Plan
 
 - [ ] Item 1
@@ -73,8 +98,25 @@ Use this structure before doing implementation:
 
 - command or test to run
 
-Status: Pending Approval
+### Verified Issue
+
+- exact verified error or mismatch
+- related file/type references
+- why this causes the issue
+
+### Proposed File Diff
+
+- path/to/file
+
+```diff
+- old line
++ new line
 ```
+````
+
+Status: Pending Approval
+
+````
 
 Use this structure after implementation:
 
@@ -89,7 +131,17 @@ Use this structure after implementation:
 - path/to/file1
 - path/to/file2
 
+### File Diff
+
+```diff
+- old line
++ new line
+````
+
 ### Verification
 
 - command output summary
+
+```
+
 ```
