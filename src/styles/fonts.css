@@ -1,0 +1,66 @@
+/* Kanit */
+@font-face {
+    font-family: 'Kanit';
+    font-weight: 300;
+    src: url('../../public/fonts/Kanit/Kanit-Light.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Kanit';
+    font-weight: 400;
+    src: url('../../public/fonts/Kanit/Kanit-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Kanit';
+    font-weight: 500;
+    src: url('../../public/fonts/Kanit/Kanit-Medium.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Kanit';
+    font-weight: 600;
+    src: url('../../public/fonts/Kanit/Kanit-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Kanit';
+    font-weight: 700;
+    src: url('../../public/fonts/Kanit/Kanit-Bold.ttf') format('truetype');
+}
+
+/* Bai Jamjuree */
+@font-face {
+    font-family: 'Bai Jamjuree';
+    font-weight: 300;
+    src: url('../../public/fonts/Bai_Jamjuree/BaiJamjuree-Light.ttf')
+        format('truetype');
+}
+
+@font-face {
+    font-family: 'Bai Jamjuree';
+    font-weight: 400;
+    src: url('../../public/fonts/Bai_Jamjuree/BaiJamjuree-Regular.ttf')
+        format('truetype');
+}
+
+@font-face {
+    font-family: 'Bai Jamjuree';
+    font-weight: 500;
+    src: url('../../public/fonts/Bai_Jamjuree/BaiJamjuree-Medium.ttf')
+        format('truetype');
+}
+
+@font-face {
+    font-family: 'Bai Jamjuree';
+    font-weight: 600;
+    src: url('../../public/fonts/Bai_Jamjuree/BaiJamjuree-SemiBold.ttf')
+        format('truetype');
+}
+
+@font-face {
+    font-family: 'Bai Jamjuree';
+    font-weight: 700;
+    src: url('../../public/fonts/Bai_Jamjuree/BaiJamjuree-Bold.ttf')
+        format('truetype');
+}

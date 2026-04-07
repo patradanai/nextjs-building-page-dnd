@@ -1,0 +1,12 @@
+ul.slick-dots {
+    bottom: 30px;
+}
+
+ul.slick-dots li button {
+    color: var(--color-primary);
+}
+
+ul.slick-dots li button:before {
+    font-size: 15px;
+    color: var(--color-primary);
+}

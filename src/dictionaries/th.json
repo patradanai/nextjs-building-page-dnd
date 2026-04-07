@@ -1,0 +1,13 @@
+{
+    "Locale": {
+        "locale": "{locale, select, th {🇩🇪 Thai} en {🇺🇸 English} other {Unknown}} }"
+    },
+    "SlideBar": {
+        "Home": "Home",
+        "About": "About",
+        "Contact": "Contact",
+        "Login": "Login",
+        "Register": "Register",
+        "Logout": "Logout"
+    }
+}

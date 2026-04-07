@@ -1,0 +1,11 @@
+version: '3'
+services:
+  web:
+    container_name: webapp-inventory-service
+    image: webapp-inventory-service:<BUILD_NUMBER>
+    env_file:
+      - .env
+    restart: always
+    ports:
+      - "3200:8080"
+    network_mode: bridge

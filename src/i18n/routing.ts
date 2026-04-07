@@ -1,0 +1,9 @@
+import { defineRouting } from 'next-intl/routing'
+
+import { defaultLocale, localePrefix, locales } from '@/configs/i18n.config'
+
+export const routing = defineRouting({
+    defaultLocale,
+    localePrefix,
+    locales,
+})
