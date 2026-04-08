@@ -54,6 +54,7 @@ const Table = <T extends object>({
         [pageIndex, pageSize]
     )
 
+    // eslint-disable-next-line react-hooks/incompatible-library
     const table = useReactTable({
         data: data ?? [],
         columns,
