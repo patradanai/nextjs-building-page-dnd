@@ -1,5 +1,7 @@
 export type PageType = 'home' | 'standard' | 'menu' | 'products' | 'contact'
 
+export type Viewport = 'desktop' | 'tablet' | 'mobile'
+
 export type SectionType =
     | 'header'
     | 'hero'

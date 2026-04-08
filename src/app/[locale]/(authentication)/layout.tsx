@@ -4,7 +4,7 @@ import '@/configs/fontawesome.config'
 import React from 'react'
 
 import DefaultLayout from '@/components/layouts/DefaultLayout/DefaultLayout'
-import { QueryProvider } from '@/components/providers/queryProvider'
+import { QueryProvider } from '@/components/providers/QueryProvider'
 
 export default async function RootLayout(props: {
     children: React.ReactNode

@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { Region, Section } from '@/types/site-builder'
+import { FC } from 'react'
+
+import { Region, Section } from '@/types/siteBuilder'
 
 import BlockRenderer from './BlockRenderer'
 
@@ -31,7 +33,7 @@ const renderRegion = (region: Region, className?: string) => (
     </div>
 )
 
-const SectionRenderer = ({ section }: SectionRendererProps) => {
+const SectionRenderer: FC<SectionRendererProps> = ({ section }) => {
     const containerClass = widthClassByValue[section.settings.maxWidth ?? '7xl']
     const paddingYClass =
         paddingYClassByValue[section.settings.paddingY ?? 'md']

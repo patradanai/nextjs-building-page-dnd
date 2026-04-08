@@ -1,10 +1,11 @@
-import { createBasePage } from '@/features/builder/create-base-page'
 import {
     SiteModel,
     TemplatePreset,
     ThemeConfig,
     BrandingConfig,
-} from '@/types/site-builder'
+} from '@/types/siteBuilder'
+
+import { createBasePage } from './createBasePage'
 
 const createBaseTheme = (): ThemeConfig => ({
     mode: 'light',

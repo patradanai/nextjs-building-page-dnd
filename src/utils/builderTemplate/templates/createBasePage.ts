@@ -1,9 +1,9 @@
-import { PageContent, PageModel, PageType } from '@/types/site-builder'
+import { PageContent, PageModel, PageType } from '@/types/siteBuilder'
 
 import {
     createDefaultPageSections,
     createSectionPreset,
-} from './section-presets'
+} from '../sectionPresent'
 
 const createPageContent = (pageType: PageType): PageContent => {
     if (pageType === 'home') {

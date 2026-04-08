@@ -1,5 +1,5 @@
 import SiteRenderer from '@/components/renderer/SiteRenderer'
-import { createSiteFromTemplate } from '@/features/templates'
+import { createSiteFromTemplate } from '@/utils/builderTemplate/templates'
 
 const normalizeSlug = (slug: string[] | undefined): string => {
     if (!slug || slug.length === 0) {

@@ -4,7 +4,7 @@ import {
     Region,
     Section,
     SectionType,
-} from '@/types/site-builder'
+} from '@/types/siteBuilder'
 
 const createNavItems = (): NavigationItem[] => [
     { id: crypto.randomUUID(), label: 'Home', href: '/' },

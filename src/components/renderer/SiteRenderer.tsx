@@ -1,4 +1,6 @@
-import { PageContent, PageModel, SiteModel } from '@/types/site-builder'
+import { FC } from 'react'
+
+import { PageContent, PageModel, SiteModel } from '@/types/siteBuilder'
 
 import SectionRenderer from './SectionRenderer'
 
@@ -12,12 +14,12 @@ interface SiteRendererProps {
     mode?: 'draft' | 'published'
 }
 
-const SiteRenderer = ({
+const SiteRenderer: FC<SiteRendererProps> = ({
     site,
     page,
     content,
     mode = 'published',
-}: SiteRendererProps) => {
+}) => {
     const resolvedContent =
         content ??
         (mode === 'draft'

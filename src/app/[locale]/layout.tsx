@@ -6,7 +6,7 @@ import { notFound } from 'next/navigation'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages } from 'next-intl/server'
 
-import { SnackBarProvider } from '@/components/providers/snackbarProvider'
+import { SnackBarProvider } from '@/components/providers/SnackBarProvider'
 import { routing } from '@/i18n/routing'
 
 const sarabun = Sarabun({
