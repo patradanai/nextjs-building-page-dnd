@@ -1,5 +1,3 @@
-import Image from 'next/image'
-
 import { ProductListBlock as ProductListBlockModel } from '@/types/siteBuilder'
 
 interface Props {
@@ -24,7 +22,7 @@ const ProductListBlock = ({ block }: Props) => {
                         className="rounded-md border border-black/10 p-4"
                     >
                         {product.imageUrl ? (
-                            <Image
+                            <img
                                 src={product.imageUrl}
                                 alt={product.title}
                                 className="mb-3 h-40 w-full rounded object-cover"

@@ -1,5 +1,3 @@
-import Image from 'next/image'
-
 import { ImageBlock as ImageBlockModel } from '@/types/siteBuilder'
 
 interface Props {
@@ -8,7 +6,7 @@ interface Props {
 
 const ImageBlock = ({ block }: Props) => {
     return (
-        <Image
+        <img
             src={block.props.src}
             alt={block.props.alt}
             className="w-full rounded-lg"

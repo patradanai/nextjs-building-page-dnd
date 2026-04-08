@@ -1,4 +1,4 @@
-import SiteRenderer from '@/components/renderer/SiteRenderer'
+import EditorModule from '@/modules/Builder/Editor'
 import { createSiteFromTemplate } from '@/utils/builderTemplate/templates'
 
 const normalizeSlug = (slug: string[] | undefined): string => {
@@ -30,14 +30,7 @@ const PublicSubdomainPage = async ({
         return <div className="p-8">No page found for this site.</div>
     }
 
-    return (
-        <SiteRenderer
-            site={site}
-            page={page}
-            content={page.publishedContent ?? page.draftContent}
-            mode="published"
-        />
-    )
+    return <EditorModule mode="published" page={page} site={site} />
 }
 
 export default PublicSubdomainPage
