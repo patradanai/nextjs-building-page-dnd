@@ -2,7 +2,7 @@
  * @type {import('next-sitemap').IConfig}
  * @see https://github.com/iamvishnusankar/next-sitemap#readme
  */
-module.exports = {
+const config = {
     // !STARTERCONF Change the siteUrl
     /** Without additional '/' on the end, e.g. https://theodorusclarence.com */
     siteUrl: 'https://tsnext-tw.thcl.dev',
@@ -11,3 +11,5 @@ module.exports = {
         policies: [{ userAgent: '*', allow: '/' }],
     },
 }
+
+export default config

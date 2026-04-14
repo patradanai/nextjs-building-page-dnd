@@ -1,16 +1,32 @@
-import { useQuery } from '@apollo/client'
+import { useQuery } from '@tanstack/react-query'
 
-import GET_RESOURCE from '@/graphql/queries/resource'
-import { IResourceResponse } from '@/types/resource'
-import { logger } from '@/utils/logger'
+import { resourceService } from '@/services/implements'
+
+interface HomeResourceData {
+    resource: {
+        socialFacebook: string
+        socialTwitter: string
+        socialLine: string
+        socialYoutube: string
+    }
+}
 
 export const useHomeClient = (id: string) => {
-    return useQuery<IResourceResponse>(GET_RESOURCE, {
-        variables: { id: id },
-        fetchPolicy: 'network-only',
-        onError: (error) => {
-            logger(id, 'Resource NEXT_PUBLIC_RESOURCE_ID')
-            logger(error.message, 'Error Fetch Resources')
+    return useQuery<HomeResourceData>({
+        queryKey: ['home-resource', id],
+        queryFn: async () => {
+            await resourceService.getResourceDetail({ id })
+
+            return {
+                resource: {
+                    socialFacebook: '',
+                    socialTwitter: '',
+                    socialLine: '',
+                    socialYoutube: '',
+                },
+            }
         },
+        staleTime: 60 * 1000,
+        throwOnError: false,
     })
 }

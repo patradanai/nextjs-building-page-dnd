@@ -1,10 +1,16 @@
-import { ApolloError } from '@apollo/client'
+interface ApolloLikeError {
+    message: string
+    networkError?: {
+        name: string
+        message: string
+    } | null
+}
 
 export class HttpApolloException extends Error {
     code: string
     status: string
 
-    constructor(err: ApolloError) {
+    constructor(err: ApolloLikeError) {
         super(err.message)
 
         const errorParser = this.wrapperError(err)
@@ -14,7 +20,7 @@ export class HttpApolloException extends Error {
         this.message = errorParser.message || 'Internal Server Error'
     }
 
-    private wrapperError(error: ApolloError): {
+    private wrapperError(error: ApolloLikeError): {
         code: string
         status: string
         message: string

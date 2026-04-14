@@ -1,6 +1,6 @@
 import { useMutation } from '@tanstack/react-query'
 
-import { useSnackBar } from '@/components/providers/snackbarProvider'
+import { useSnackBar } from '@/components/providers/SnackBarProvider'
 import { HttpException } from '@/exceptions/exceptionHttp'
 import { authService } from '@/services/implements'
 import {

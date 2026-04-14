@@ -10,9 +10,9 @@ import {
 } from '@/types/authentication'
 import { IHTTPResponse } from '@/types/common'
 
-import { IAuthRepository } from '../authRepository'
+import { AuthRepository } from '../authRepository'
 
-export class AuthRepositoryImplMock implements IAuthRepository {
+export class AuthRepositoryImplMock implements AuthRepository {
     signIn(_data: ISignInRequest): Promise<ISignInResponse> {
         throw new Error('Method not implemented.')
     }

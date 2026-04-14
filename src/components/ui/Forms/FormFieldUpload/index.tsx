@@ -4,7 +4,7 @@ import { faClose } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { NextPage } from 'next'
 
-import ThumbImage from './thumb'
+import ThumbImage from './Thumb'
 
 interface Props {
     files: any

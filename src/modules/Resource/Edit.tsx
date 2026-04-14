@@ -22,6 +22,11 @@ const EditResourceModule: NextPage<Props> = ({ id }) => {
     if (isLoading) {
         return <div>Loading...</div>
     }
+
+    if (!data) {
+        return <Error />
+    }
+
     return (
         <div>
             {/* Header */}
@@ -37,7 +42,11 @@ const EditResourceModule: NextPage<Props> = ({ id }) => {
             </nav>
             <div className="flex flex-row">
                 <FormContent />
-                <SlidebarStatus />
+                <SlidebarStatus
+                    id={String(data.id)}
+                    createdAt={data.created_at}
+                    published={data.published_at}
+                />
             </div>
         </div>
     )

@@ -3,9 +3,9 @@ import { ApolloClient, MutationOptions, QueryOptions } from '@apollo/client'
 import getClient from '@/configs/apolloServer.config'
 
 abstract class HTTPApolloServer {
-    protected instance: ApolloClient<any> | undefined
+    protected instance: ApolloClient | undefined
 
-    createInstance(): ApolloClient<any> {
+    createInstance(): ApolloClient {
         this.instance = getClient()
 
         return this.instance
@@ -13,7 +13,7 @@ abstract class HTTPApolloServer {
 }
 
 export abstract class BaseApolloServer extends HTTPApolloServer {
-    protected client: ApolloClient<any>
+    protected client: ApolloClient
 
     constructor() {
         super()
@@ -21,7 +21,7 @@ export abstract class BaseApolloServer extends HTTPApolloServer {
     }
 
     query<T>(query: any, options: Omit<QueryOptions, 'query'>): Promise<T> {
-        return this.client.query<T>({
+        return this.client.query({
             query: query,
             ...options,
         }) as Promise<T>
@@ -31,7 +31,7 @@ export abstract class BaseApolloServer extends HTTPApolloServer {
         mutation: any,
         options: Omit<MutationOptions, 'mutation'>
     ): Promise<T> {
-        return this.client.mutate<T>({
+        return this.client.mutate({
             mutation: mutation,
             ...options,
         }) as Promise<T>

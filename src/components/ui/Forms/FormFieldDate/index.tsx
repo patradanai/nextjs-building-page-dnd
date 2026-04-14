@@ -41,7 +41,11 @@ export const InputDate: NextPage<Props> = ({
 }) => {
     const [dateState, setDateState] = useState<Date>(new Date())
 
-    const handleDate = (date: Date) => {
+    const handleDate = (date: Date | null) => {
+        if (!date) {
+            return
+        }
+
         setDateState(date)
         onChangeDate(name, date)
     }

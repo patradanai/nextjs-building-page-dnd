@@ -1,23 +1,6 @@
-import { z, ZodType } from 'zod'
+import { z } from 'zod'
 
-export interface IContentFormData {
-    domain: string
-    github: string
-    blogId: string
-    title: string
-    description: string
-    content: string
-    image: string
-    metaDescription: {
-        title: string
-        description: string
-        isFollow: boolean
-        isIndex: boolean
-        canonical: string
-    }
-}
-
-export const ContentSchema: ZodType<IContentFormData> = z.object({
+export const ContentSchema = z.object({
     domain: z.string(),
     github: z.string(),
     blogId: z.string(),
@@ -33,3 +16,5 @@ export const ContentSchema: ZodType<IContentFormData> = z.object({
         canonical: z.string(),
     }),
 })
+
+export type IContentFormData = z.infer<typeof ContentSchema>

@@ -294,7 +294,10 @@ export default [
                 {
                     'src/app/**/*.{ts,tsx}':
                         '@(+([a-z0-9_-])*(-+([a-z]))|\\[+([a-z0-9_-])*(-+([a-z]))\\])',
+                    'src/components/builder/**/': 'PASCAL_CASE',
                     'src/components/layouts/**/': 'PASCAL_CASE',
+                    'src/components/providers/**/': 'PASCAL_CASE',
+                    'src/components/renderer/**/': 'PASCAL_CASE',
                     'src/components/ui/**/': 'PASCAL_CASE',
                     'src/components/templates/**/': 'PASCAL_CASE',
                     'src/modules/**/': 'PASCAL_CASE',

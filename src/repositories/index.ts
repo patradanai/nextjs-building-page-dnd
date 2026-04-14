@@ -9,7 +9,9 @@ import { AuthRepositoryImpl } from './implements/authRepositoryImpl'
 import { ExampleRepositoryImpl } from './implements/exampleRepositoryImpl'
 import { ImageRepositoryImpl } from './implements/imageRespositoryImpl'
 import { ResourceRepositoryImpl } from './implements/resourceRepositoryImpl'
+import { SocketRepositoryImpl } from './implements/socketRepositoryImpl'
 import { ResourceRepository } from './resourceRepository'
+import { SocketRepository } from './socketRepository'
 
 /**
  * Repositories
@@ -24,6 +26,7 @@ interface IReposities {
     authRepository: AuthRepository
     resourcesRepository: ResourceRepository
     imageRepository: ImageRepository
+    socketRepository: SocketRepository
 }
 
 class BaseRepostiory {
@@ -31,6 +34,7 @@ class BaseRepostiory {
     authRepository: AuthRepository
     resourcesRepository: ResourceRepository
     imageRepository: ImageRepository
+    socketRepository: SocketRepository
 
     constructor(
         options: IReposities,
@@ -44,6 +48,7 @@ class BaseRepostiory {
         this.authRepository = options.authRepository
         this.resourcesRepository = options.resourcesRepository
         this.imageRepository = options.imageRepository
+        this.socketRepository = options.socketRepository
 
         const envonment = process.env.APP_ENV ?? 'development'
 
@@ -56,6 +61,7 @@ class BaseRepostiory {
             this.authRepository = overrideReposities.authRepository
             this.resourcesRepository = overrideReposities.resourcesRepository
             this.imageRepository = overrideReposities.imageRepository
+            this.socketRepository = overrideReposities.socketRepository
         }
     }
 }
@@ -66,6 +72,7 @@ export const reposities = new BaseRepostiory(
         authRepository: new AuthRepositoryImpl(),
         resourcesRepository: new ResourceRepositoryImpl(),
         imageRepository: new ImageRepositoryImpl(),
+        socketRepository: new SocketRepositoryImpl(),
     },
     {
         stub: {
@@ -73,12 +80,14 @@ export const reposities = new BaseRepostiory(
             authRepository: new AuthRepositoryImplMock(),
             resourcesRepository: new ResourceRepositoryImplMock(),
             imageRepository: new ImageRepositoryImplMock(),
+            socketRepository: new SocketRepositoryImpl(),
         },
         development: {
             exampleRepository: new ExampleRepositoryImplMock(),
             authRepository: new AuthRepositoryImplMock(),
             resourcesRepository: new ResourceRepositoryImplMock(),
             imageRepository: new ImageRepositoryImplMock(),
+            socketRepository: new SocketRepositoryImpl(),
         },
     }
 )

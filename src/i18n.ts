@@ -6,10 +6,13 @@ import { locales, timeZone } from './configs/i18n.config'
 
 export default getRequestConfig(async ({ locale }) => {
     // Validate that the incoming `locale` parameter is valid
-    if (!locales.includes(locale as any)) notFound()
+    if (!locale || !locales.includes(locale as any)) notFound()
+
+    const validLocale = locale
 
     return {
-        messages: (await import(`./dictionaries/${locale}.json`)).default,
+        locale: validLocale,
+        messages: (await import(`./dictionaries/${validLocale}.json`)).default,
         timeZone: timeZone,
     }
 })

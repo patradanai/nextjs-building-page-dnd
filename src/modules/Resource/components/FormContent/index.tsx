@@ -26,7 +26,7 @@ const FormContent = () => {
         handleSubmit,
         formState: { errors },
         control,
-    } = useForm({
+    } = useForm<IContentFormData>({
         resolver: zodResolver(ContentSchema),
     })
 

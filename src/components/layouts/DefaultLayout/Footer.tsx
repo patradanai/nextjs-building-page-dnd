@@ -21,9 +21,11 @@ import { env } from '@/utils/env'
 type Props = Record<string, never>
 
 export const Footer: NextPage<Props> = () => {
-    const { data, loading, error } = useHomeClient(env.NEXT_PUBLIC_RESOURCE_ID)
+    const { data, isLoading, error } = useHomeClient(
+        env.NEXT_PUBLIC_RESOURCE_ID
+    )
 
-    if (loading) return <div>Loading...</div>
+    if (isLoading) return <div>Loading...</div>
 
     if (error) return <div>Error</div>
 

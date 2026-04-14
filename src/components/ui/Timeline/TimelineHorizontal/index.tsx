@@ -68,10 +68,12 @@ export const WrapperTimelineHorizontal: NextPage<
         <div className="flex w-full">
             {Children.map(children, (child, index) => {
                 if (isValidElement(child)) {
-                    return React.cloneElement(child, {
-                        ...child.props,
-                        isChecked: index < stateNumber ? true : false,
-                    })
+                    return React.cloneElement(
+                        child as React.ReactElement<PropsTimelineHorizontal>,
+                        {
+                            isChecked: index < stateNumber,
+                        }
+                    )
                 }
 
                 return child

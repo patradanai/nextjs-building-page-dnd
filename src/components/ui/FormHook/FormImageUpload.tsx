@@ -4,11 +4,17 @@ import Image from 'next/image'
 
 import { faCancel } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useController, Control } from 'react-hook-form'
+import {
+    Control,
+    FieldValues,
+    Path,
+    PathValue,
+    useController,
+} from 'react-hook-form'
 
-interface FormImageUploadProps {
-    name: string
-    control: Control<any>
+interface FormImageUploadProps<TFieldValues extends FieldValues> {
+    name: Path<TFieldValues>
+    control: Control<TFieldValues>
     label?: string
     accept?: string
     maxSize?: number // in MB
@@ -17,7 +23,7 @@ interface FormImageUploadProps {
     disabled?: boolean
 }
 
-export const FormImageUpload: React.FC<FormImageUploadProps> = ({
+export const FormImageUpload = <TFieldValues extends FieldValues>({
     name,
     control,
     label = 'Upload Image',
@@ -26,14 +32,14 @@ export const FormImageUpload: React.FC<FormImageUploadProps> = ({
     className = '',
     defaultImage,
     disabled = false,
-}) => {
+}: FormImageUploadProps<TFieldValues>) => {
     const {
         field: { onChange, value },
         fieldState: { error },
     } = useController({
         name,
         control,
-        defaultValue: '',
+        defaultValue: '' as PathValue<TFieldValues, Path<TFieldValues>>,
     })
 
     const [preview, setPreview] = useState<string | null>(() => {

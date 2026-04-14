@@ -7,14 +7,14 @@ import Button from '@/components/ui/Button/Button'
 import Section from '@/components/ui/Container/Section'
 import FormInput from '@/components/ui/FormHook/FormInput'
 
-import { UserSchema } from './schema'
+import { IUserFormData, UserSchema } from './schema'
 
 const FormLogin = () => {
     const {
         register,
         handleSubmit,
         formState: { errors },
-    } = useForm({
+    } = useForm<IUserFormData>({
         resolver: zodResolver(UserSchema),
     })
 

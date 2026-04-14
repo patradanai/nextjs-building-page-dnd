@@ -13,11 +13,11 @@ import { IHTTPResponse } from '@/types/common'
 import { BaseApiService } from '@/utils/base/baseHttp'
 import { env } from '@/utils/env'
 
-import { IAuthRepository } from '../authRepository'
+import { AuthRepository } from '../authRepository'
 
 export class AuthRepositoryImpl
     extends BaseApiService
-    implements IAuthRepository
+    implements AuthRepository
 {
     constructor() {
         super({

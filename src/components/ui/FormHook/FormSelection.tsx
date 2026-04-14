@@ -1,24 +1,24 @@
-import React, { HTMLInputTypeAttribute } from 'react'
+import React from 'react'
 
 import { UseFormRegister, FieldValues, FieldError } from 'react-hook-form'
 
 import { cn } from '@/utils/cn'
 
 interface InputProps {
-    name: string
+    name?: string
     label: string
     required?: boolean
     errors?: FieldError
-    type?: HTMLInputTypeAttribute
     disabled?: boolean
     className?: string
     startIcon?: React.ReactNode
     endIcon?: React.ReactNode
+    children?: React.ReactNode
 }
 
-const FormSelection = React.forwardRef<
-    HTMLInputElement,
-    InputProps & ReturnType<UseFormRegister<FieldValues>>
+const BaseFormSelection = React.forwardRef<
+    HTMLSelectElement,
+    InputProps & Partial<ReturnType<UseFormRegister<FieldValues>>>
 >(
     (
         {
@@ -27,12 +27,12 @@ const FormSelection = React.forwardRef<
             name,
             label,
             errors,
-            type = 'text',
             disabled = false,
             className,
             startIcon,
             endIcon,
             required,
+            children,
         },
         ref
     ) => (
@@ -51,12 +51,12 @@ const FormSelection = React.forwardRef<
                         {startIcon}
                     </div>
                 )}
-                <input
-                    type={type}
+                <select
                     name={name as string}
                     ref={ref}
                     onChange={onChange}
                     onBlur={onBlur}
+                    disabled={disabled}
                     className={cn(
                         'outline-hidden h-[38px] w-full appearance-none rounded-sm bg-white px-4 placeholder-[#9c9b9b] placeholder:text-sm',
                         {
@@ -65,7 +65,9 @@ const FormSelection = React.forwardRef<
                         },
                         className // Spread className at the end to allow overrides
                     )}
-                />
+                >
+                    {children}
+                </select>
                 {endIcon && (
                     <div className="grid h-[38px] w-[45px] place-items-center bg-[#f2f2f2]">
                         {endIcon}
@@ -79,6 +81,18 @@ const FormSelection = React.forwardRef<
     )
 )
 
-FormSelection.displayName = 'FormSelection'
+BaseFormSelection.displayName = 'FormSelection'
+
+const FormSelectionOption = ({
+    children,
+    value,
+}: {
+    children: React.ReactNode
+    value: string
+}) => <option value={value}>{children}</option>
+
+const FormSelection = Object.assign(BaseFormSelection, {
+    Option: FormSelectionOption,
+})
 
 export default FormSelection

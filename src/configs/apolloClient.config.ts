@@ -1,19 +1,22 @@
 import { ApolloLink, HttpLink } from '@apollo/client'
 import {
-    NextSSRApolloClient,
-    NextSSRInMemoryCache,
+    ApolloClient,
+    InMemoryCache,
     SSRMultipartLink,
-} from '@apollo/experimental-nextjs-app-support/ssr'
+} from '@apollo/client-integration-nextjs'
 
 import { env } from '@/utils/env'
 
 const makeClient = () => {
     const httpLink = new HttpLink({
         uri: env.NEXT_PUBLIC_API_URL,
+        headers: {
+            authorization: `Bearer ${env.NEXT_PUBLIC_API_TOKEN}`,
+        },
     })
 
-    return new NextSSRApolloClient({
-        cache: new NextSSRInMemoryCache(),
+    return new ApolloClient({
+        cache: new InMemoryCache(),
         link:
             typeof window === 'undefined'
                 ? ApolloLink.from([
@@ -26,9 +29,6 @@ const makeClient = () => {
                       httpLink,
                   ])
                 : httpLink,
-        headers: {
-            authorization: `Bearer ${env.NEXT_PUBLIC_API_TOKEN}`,
-        },
     })
 }
 

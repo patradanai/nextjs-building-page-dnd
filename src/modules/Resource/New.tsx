@@ -21,7 +21,7 @@ const NewResourceModule = () => {
             </nav>
             <div className="flex flex-row">
                 <FormContent />
-                <SlidebarStatus />
+                <SlidebarStatus id="Draft" createdAt="-" published="-" />
             </div>
         </div>
     )

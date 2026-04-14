@@ -17,14 +17,16 @@ type LoggerImpl = <T>(
 ) => StateCreator<T, [], []>
 
 const loggerImpl: LoggerImpl = (f, name) => (set, get, store) => {
-    const loggedSet: typeof set = (...a) => {
-        set(...a)
+    const loggedSet: typeof set = (...args) => {
+        set(...(args as Parameters<typeof set>))
         if (env.NEXT_PUBLIC_ENVIRONMENT === 'development') {
             // eslint-disable-next-line no-console
             console.log(...(name ? [`${name}:`] : []), get())
         }
     }
-    store.setState = loggedSet
+    store.setState = (...args) => {
+        loggedSet(...(args as Parameters<typeof loggedSet>))
+    }
 
     return f(loggedSet, get, store)
 }

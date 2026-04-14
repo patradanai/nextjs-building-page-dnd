@@ -1,5 +1,5 @@
 import { HttpLink, InMemoryCache, ApolloClient } from '@apollo/client'
-import { registerApolloClient } from '@apollo/experimental-nextjs-app-support/rsc'
+import { registerApolloClient } from '@apollo/client-integration-nextjs'
 
 import { env } from '@/utils/env'
 
@@ -8,10 +8,10 @@ export const { getClient } = registerApolloClient(() => {
         cache: new InMemoryCache(),
         link: new HttpLink({
             uri: env.NEXT_PUBLIC_API_URL,
+            headers: {
+                authorization: `Bearer ${env.NEXT_PUBLIC_API_TOKEN}`,
+            },
         }),
-        headers: {
-            authorization: `Bearer ${env.NEXT_PUBLIC_API_TOKEN}`,
-        },
         queryDeduplication: false,
         defaultOptions: {
             watchQuery: {

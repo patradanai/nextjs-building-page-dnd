@@ -39,7 +39,7 @@ const SnackBarProvider: NextPage<Props> = (props) => {
 
 const useSnackBar = () => {
     const context = useContext(SnackbarContext)
-    if (context === undefined)
+    if (!context)
         throw new Error(
             'useSnackBar context is used outside the SnackBarProvider Provider'
         )

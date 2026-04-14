@@ -3,6 +3,8 @@ import React, { FC } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
+import type { Route } from 'next'
+
 interface IListMenu {
     icons: React.ReactNode
     name: string
@@ -22,7 +24,7 @@ const ListMenu: FC<IListMenu> = ({ icons, name, status, src, onClick }) => {
             }`}
         >
             <button className="size-full" onClick={onClick}>
-                <Link href={src}>
+                <Link href={src as Route}>
                     <div className="flex cursor-pointer flex-row items-center space-x-2 px-[27px]">
                         <div
                             className={`group-hover:text-[#ffffff] ${
