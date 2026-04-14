@@ -1,5 +1,5 @@
 import '@/styles/globals.css'
-import '@/configs/fontawesome.config'
+import '@/lib/fontawesome'
 
 import React from 'react'
 

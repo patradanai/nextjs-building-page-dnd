@@ -1,6 +1,6 @@
 import { ApolloClient, MutationOptions, QueryOptions } from '@apollo/client'
 
-import getClient from '@/configs/apolloServer.config'
+import getClient from '@/lib/apollo/apolloServer'
 
 abstract class HTTPApolloServer {
     protected instance: ApolloClient | undefined

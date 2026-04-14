@@ -2,7 +2,7 @@
 import { ApolloNextAppProvider } from '@apollo/client-integration-nextjs'
 import { NextPage } from 'next'
 
-import { makeClient } from '@/configs/apolloClient.config'
+import { makeClient } from '@/lib/apollo/apolloClient'
 
 interface Props {
     children: React.ReactNode

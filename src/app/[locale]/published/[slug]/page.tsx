@@ -1,12 +1,11 @@
-import { PublishedRenderer } from '@/components/renderer/PublishedRenderer'
-import { getDefaultPageSchema } from '@/lib/builder/default-page-schema'
+import PublishedPage from '@/modules/Builder/PublishedPage'
 
-export default async function PublishedPage({
+export default async function PublishedRoute({
     params,
 }: {
     params: Promise<{ slug: string }>
 }) {
     await params
 
-    return <PublishedRenderer node={getDefaultPageSchema()} />
+    return <PublishedPage />
 }

@@ -22,7 +22,7 @@ const refreshTokenHandler = async (token: JWT) => {
             ...token,
             accessToken: response.data.access_token,
             expiredIn: Date.now() + response.data.expires_in * 1000,
-            refreshToken: response.data.refresh_token ?? token.refreshToken, // Fall back to old refresh token
+            refreshToken: response.data.refresh_token ?? token.refreshToken,
         }
     } catch (error: any) {
         logger(error, 'error refreshTokenHandler')
@@ -41,9 +41,6 @@ export const authConfig = {
         async signIn() {
             return true
         },
-        // async redirect({ url, baseUrl }) {
-        //     return baseUrl
-        // },
         async session({ session, token }) {
             if (token) {
                 session.user = token.user
@@ -70,12 +67,10 @@ export const authConfig = {
                 throw new Error('ExpiredInNotFound')
             }
 
-            // Return previous token if the access token has not expired yet
             if (Date.now() < token.expiredIn) {
                 return token
             }
 
-            // Access token has expired, try to update
             const tokenData = refreshTokenHandler(token)
             return {
                 tokenData,
@@ -126,7 +121,7 @@ export const authConfig = {
                 }
             },
         }),
-    ], // Add providers with an empty array for now
+    ],
     session: {
         strategy: 'jwt',
     },

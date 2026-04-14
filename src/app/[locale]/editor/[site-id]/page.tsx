@@ -1,11 +1,11 @@
-import { EditorShell } from '@/components/builder/EditorShell'
+import EditorPage from '@/modules/Builder/EditorPage'
 
-export default async function EditorPage({
+export default async function EditorRoute({
     params,
 }: {
     params: Promise<Record<string, string>>
 }) {
     const routeParams = await params
 
-    return <EditorShell siteId={routeParams['site-id']} />
+    return <EditorPage siteId={routeParams['site-id']} />
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { MySwal } from '@/configs/sweetalert.config'
+import { MySwal } from '@/lib/sweetalert'
 
 interface Props {
     handlerDelete: () => void

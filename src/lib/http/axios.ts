@@ -10,7 +10,6 @@ const instance = axios.create({
     httpsAgent: new https.Agent({
         rejectUnauthorized: false,
     }),
-    // baseURL: env.NEXT_PUBLIC_API_URL,
     timeout: parseFloat(env.NEXT_PUBLIC_API_TIMEOUT),
     cancelToken: cancelTokenSource.token,
 })
